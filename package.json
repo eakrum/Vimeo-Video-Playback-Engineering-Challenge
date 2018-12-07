@@ -1,0 +1,17 @@
+{
+  "name": "vimeo-video-playback-engineering",
+  "version": "1.0.0",
+  "description": "A coding challenge for the vimeo video playback engineering internship",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eakrum Awwal",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "body-parser": "^1.18.3",
+    "mongodb": "^3.1.7"
+  }
+}
