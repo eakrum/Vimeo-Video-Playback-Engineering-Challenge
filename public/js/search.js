@@ -1,6 +1,10 @@
 function submit() {
   var query = document.getElementById("searchField").value;
   console.log("query: ", query);
+  var cardContainer = document.getElementById("card-container");
+  while (cardContainer.firstChild) {
+    cardContainer.removeChild(cardContainer.firstChild);
+  }
 
   $.ajax({
     type: "POST",
@@ -14,6 +18,18 @@ function submit() {
 }
 
 function renderNames(videos) {
+  let cardContainer = document.getElementById("card-container");
+
+  let newH2 = document.createElement("h2");
+
   let names = videos.map(videoNames => videoNames.name);
-  console.log(names);
+  for (let i = 0; i < names.length; i++) {
+    console.log(names[i]);
+    let newDiv = document.createElement("div");
+    let newH2 = document.createElement("h2");
+    newH2.innerHTML = names[i];
+    newDiv.setAttribute("class", "card");
+    let card = newDiv.appendChild(newH2);
+    cardContainer.appendChild(newDiv);
+  }
 }
