@@ -8,15 +8,26 @@ router.get("/", (req, res) => {
 });
 
 router.get("/search", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/", "search.html"));
+
   console.log("get video search screen");
 });
 
 router.get("/player", (req, res) => {
-  console.log("get video player screen");
+  res.sendFile(path.join(__dirname, "../public/", "player.html"));
+  console.log("get player");
 });
 
 router.get("/player/:id", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/", "home.html"));
   console.log("get player with video ID and display");
+});
+
+router.post("/search", (req, res) => {
+  const query = req.body.data;
+  console.log(query);
+  console.log("posted a video search to server");
+  res.send(query);
 });
 
 router.post("/videos/cues", (req, res) => {
