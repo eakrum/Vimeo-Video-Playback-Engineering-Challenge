@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const router = express.Router();
+const { getVideos } = require("./vimeo/searchApi");
 
 router.use(express.static("public"));
 router.get("/", (req, res) => {
@@ -23,11 +24,11 @@ router.get("/player/:id", (req, res) => {
   console.log("get player with video ID and display");
 });
 
-router.post("/search", (req, res) => {
-  const query = req.body.data;
-  console.log(query);
-  console.log("posted a video search to server");
-  res.send(query);
+router.post("/search", async (req, res) => {
+  const query = req.body.data; //query received from client input
+  const vimeoData = await getVideos(query); //response received from Vimeo API - wait for the promise to be fulfilled
+  const videos = vimeoData.data; //video data 
+  res.send(videos); //send video data back to client to render front end
 });
 
 router.post("/videos/cues", (req, res) => {

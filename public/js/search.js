@@ -6,9 +6,14 @@ function submit() {
     type: "POST",
     url: "http://127.0.0.1:3000/search",
     data: { data: query },
-    success: function(d) {
-      alert(d);
-      console.log("response: ", d);
+    success: function(data) {
+      console.log("response: ", data);
+      renderNames(data);
     }
   });
+}
+
+function renderNames(videos) {
+  let names = videos.map(videoNames => videoNames.name);
+  console.log(names);
 }
