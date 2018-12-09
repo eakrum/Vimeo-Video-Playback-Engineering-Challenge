@@ -3,31 +3,29 @@ const path = require("path");
 const router = express.Router();
 const { getVideos } = require("./vimeo/searchApi");
 
-router.use(express.static("public"));
 router.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/", "home.html"));
+  res.render("vimeoFrontEnd/home");
 });
 
 router.get("/search", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/", "search.html"));
+  res.render("vimeoFrontEnd/search");
 
   console.log("get video search screen");
 });
 
-router.get("/player", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/", "player.html"));
-  console.log("get player");
-});
-
 router.get("/player/:id", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/", "home.html"));
-  console.log("get player with video ID and display");
+  let id = req.params.id;
+  let src = `https://player.vimeo.com/video/${id}`;
+  console.log("got a player with id: ", id);
+  res.render("vimeoFrontEnd/player", {
+    video: src
+  });
 });
 
 router.post("/search", async (req, res) => {
   const query = req.body.data; //query received from client input
   const vimeoData = await getVideos(query); //response received from Vimeo API - wait for the promise to be fulfilled
-  const videos = vimeoData.data; //video data 
+  const videos = vimeoData.data; //video data
   res.send(videos); //send video data back to client to render front end
 });
 

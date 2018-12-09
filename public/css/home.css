@@ -1,6 +1,8 @@
+/******************************HOME*********************************/
 * {
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 
 header {
@@ -16,10 +18,6 @@ header {
   width: 150px;
   height: auto;
   float: left;
-}
-
-body {
-  font-family: monospace;
 }
 
 .row {
@@ -72,3 +70,74 @@ h1 {
   background-color: darkcyan;
   transition: all 0.5s ease-in;
 }
+/********************************SEARCH****************************************/
+.box {
+  position: absolute;
+  top: 8%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+.logo-search img {
+  position: absolute;
+  float: left;
+  width: 150px;
+  height: auto;
+  left: -60%;
+  top: 0;
+}
+.input {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  box-sizing: border-box;
+  transition: 0.5s;
+}
+body {
+  background: #29313a;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="text"] {
+  background: #fff;
+  width: 340px;
+  height: 50px;
+  border: none;
+  outline: none;
+  padding: 0 25px;
+  border-radius: 25px 0 0 25px;
+}
+
+input[type="submit"] {
+  position: relative;
+  border-radius: 0 25px 25px 0;
+  left: -5px;
+  width: 100px;
+  height: 50px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: cyan;
+}
+input[type="submit"]:hover {
+  background-color: darkslateblue;
+}
+#card-container {
+  position: absolute;
+  top: 45%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+}
+/* Add a card effect for articles */
+.card {
+  background-color: cyan;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.card:hover {
+  background-color: #fff;
+}
+
+/********************************PLAYER****************************************/
