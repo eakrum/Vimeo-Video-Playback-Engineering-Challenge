@@ -22,7 +22,7 @@ router.get("/player/:id", async (req, res) => {
       video: src
     });
   } catch (e) {
-    console.log("no cues just render a blank one")
+    console.log("no cues just render a blank one");
     res.render("vimeoFrontEnd/player", {
       video: src
     });
@@ -40,9 +40,9 @@ router.post("/videos/cues", async (req, res) => {
   const data = req.body;
   try {
     let newCue = await addCue(data.videoID, data.cue, data.time);
-    res.status(404).send(newCue);
+    res.status(200).send("success");
   } catch (e) {
-    res.status(404).send("Couldnt add cue: ", e);
+    console.log(e);
   }
 });
 
