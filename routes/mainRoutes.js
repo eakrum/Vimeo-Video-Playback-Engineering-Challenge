@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const router = express.Router();
 const { getVideos } = require("./vimeo/searchApi");
+const { addCue, getCue } = require("../data/cue");
 
 router.get("/", (req, res) => {
   res.render("vimeoFrontEnd/home");
@@ -9,17 +10,23 @@ router.get("/", (req, res) => {
 
 router.get("/search", (req, res) => {
   res.render("vimeoFrontEnd/search");
-
-  console.log("get video search screen");
 });
 
-router.get("/player/:id", (req, res) => {
+router.get("/player/:id", async (req, res) => {
   let id = req.params.id;
   let src = `https://player.vimeo.com/video/${id}`;
-  console.log("got a player with id: ", id);
-  res.render("vimeoFrontEnd/player", {
-    video: src
-  });
+  try {
+    let cues = await getCue(id);
+    console.log("this video has cues: ", cues);
+    res.render("vimeoFrontEnd/player", {
+      video: src
+    });
+  } catch (e) {
+    console.log("no cues just render a blank one")
+    res.render("vimeoFrontEnd/player", {
+      video: src
+    });
+  }
 });
 
 router.post("/search", async (req, res) => {
@@ -29,12 +36,25 @@ router.post("/search", async (req, res) => {
   res.send(videos); //send video data back to client to render front end
 });
 
-router.post("/videos/cues", (req, res) => {
-  console.log("post cues to mongo");
+router.post("/videos/cues", async (req, res) => {
+  const data = req.body;
+  try {
+    let newCue = await addCue(data.videoID, data.cue, data.time);
+    res.status(404).send(newCue);
+  } catch (e) {
+    res.status(404).send("Couldnt add cue: ", e);
+  }
 });
 
 router.delete("/videos/cues", (req, res) => {
   console.log("delete cue from mongo");
 });
+
+// async function test() {
+//   let getter = await getCue("163662857");
+//   console.log(getter);
+// }
+
+// test();
 
 module.exports = router;

@@ -141,3 +141,76 @@ input[type="submit"]:hover {
 }
 
 /********************************PLAYER****************************************/
+.view-player {
+  margin: 30px;
+}
+
+.content-player {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+}
+
+#player {
+  position: relative;
+}
+
+#cue-background {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-cue {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  resize: none;
+  box-sizing: border-box;
+  border-radius: 9px;
+  height: 75px;
+  font-size: 1em;
+}
+.input-cue:focus {
+  /* get rid of form focus styling */
+  outline: none;
+
+  border: 2px solid #0094ff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+}
+.video-changer {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid black;
+  resize: none;
+  box-sizing: border-box;
+  border-radius: 9px;
+  height: 75px;
+  font-size: 1em;
+}
+
+.button-cue-submit {
+  color: white;
+  background-color: #4d9fff;
+  border: none;
+  border-radius: 3px;
+  width: 125px;
+  height: 30px;
+  font-size: 1em;
+}
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.cue {
+  margin: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+}
