@@ -1,28 +1,68 @@
-<div class="view-player">
-    <div class="content-player">
-        <div class="side-player">
-            <div id="player">
-                <iframe src={{video}} width="1000" height="600" frameborder="0" webkitallowfullscreen
-                    mozallowfullscreen allowfullscreen allow="autoplay; encrypted-media"></iframe>
+<div class="hero">
+    <div class="logo"><img src="/img/vimeo-logo.png" /></div>
+
+
+
+    <div class="outer-wrapper">
+        <div class="inner-wrapper">
+            <div id="overlay">
+                <h2 id="cue_text">WHERE THE FUCK ARE U </h2>
+            </div>
+            <iframe src={{video}} width="1000" height="600" frameborder="0" webkitallowfullscreen mozallowfullscreen
+                allowfullscreen allow="autoplay; encrypted-media" class="videoframe"></iframe>
+            <div class="cue-function-container">
+                <textarea id="input-cue" class="input-cue" type="text" name="cue" placeholder="Add a cue.."></textarea>
+                <div class="button-container"><button class="button-cue-submit" onclick="submitCue()">Add Cue</button></div>
+
+                <textarea type="text" id="video-changer" class="video-changer" placeholder="Change the video.."></textarea>
+                <div class="button-container"><button class="button-cue-submit" onclick="videoChanger()">Change Video</button></div>
 
             </div>
-        </div>
-        <div class="side-cues">
-            <textarea id="input-cue" class="input-cue" type="text" name="cue" placeholder="Cue text goes here"></textarea>
-            <div class="button-container"><button class="button-cue-submit" onclick="submitCue()">Submit Cue</button></div>
 
-            <textarea type="text" id="video-changer" class="video-changer"></textarea>
-            <div class="button-container"><button class="button-cue-submit" onclick="videoChanger()">Change Video</button></div>
 
-            </input>
-
-            <hr>
-            <h3>Cues</h3>
-            <p>Click on cues to remove them.</p>
-            <div id="cues"></div>
         </div>
     </div>
+
+    <div class="cue-container">
+
+
+
+        <hr>
+        <h3>Cues (click on any item in row to delete it!)</h3>
+        <div id="submitted-cues">
+
+            <table id="cueTable" class='list'>
+                <thead>
+                    <tr>
+                        <th>Cue</th>
+                        <th>Time</th>
+                        <th>Cue ID</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each cues}}
+                    <tr id={{this.cueId}}>
+                        <td>{{this.cue}}</td>
+                        <td>{{this.time}} </td>
+                        <td>{{this.cueId}}</td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+
+
+
+
+
+        </div>
+
+
+    </div>
 </div>
+
+
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script src="/js/vimeoPlayer.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

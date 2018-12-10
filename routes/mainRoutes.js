@@ -2,7 +2,13 @@ const express = require("express");
 const path = require("path");
 const router = express.Router();
 const { getVideos } = require("./vimeo/searchApi");
-const { addCue, getCue } = require("../data/cue");
+const {
+  addCue,
+  existsCue,
+  returnCue,
+  appendCue,
+  deleteCue
+} = require("../data/cue");
 
 router.get("/", (req, res) => {
   res.render("vimeoFrontEnd/home");
@@ -15,12 +21,16 @@ router.get("/search", (req, res) => {
 router.get("/player/:id", async (req, res) => {
   let id = req.params.id;
   let src = `https://player.vimeo.com/video/${id}`;
+  //check if the video has cues
   try {
-    let cues = await getCue(id);
-    console.log("this video has cues: ", cues);
+    let cueData = await returnCue(id);
+    console.log("this video has cues: ", cueData.cues);
     res.render("vimeoFrontEnd/player", {
-      video: src
+      video: src,
+      cues: cueData.cues
     });
+
+    //no cues on video
   } catch (e) {
     console.log("no cues just render a blank one");
     res.render("vimeoFrontEnd/player", {
@@ -37,24 +47,24 @@ router.post("/search", async (req, res) => {
 });
 
 router.post("/videos/cues", async (req, res) => {
-  const data = req.body;
+  const data = req.body; //cue data
   try {
-    let newCue = await addCue(data.videoID, data.cue, data.time);
-    res.status(200).send("success");
+    const cueExists = await existsCue(data);
+    res.status(200).send(cueExists.cues);
   } catch (e) {
-    console.log(e);
+    //append cues
+    console.log("append logic");
+    const appendedCue = await appendCue(data.videoID, data.cue, data.time);
+    console.log("success appended: ", appendedCue);
+    res.status(200).send(appendedCue);
   }
 });
 
-router.delete("/videos/cues", (req, res) => {
+router.delete("/videos/cues", async (req, res) => {
+  const data = req.body;
   console.log("delete cue from mongo");
+  let updatedAfterDelete = await deleteCue(data.videoId, data.cueId);
+  res.status(200).send(updatedAfterDelete);
 });
-
-// async function test() {
-//   let getter = await getCue("163662857");
-//   console.log(getter);
-// }
-
-// test();
 
 module.exports = router;

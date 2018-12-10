@@ -1,6 +1,5 @@
 function submit() {
   var query = document.getElementById("searchField").value;
-  
 
   //when you submit, just remove the list that was there before.
   var cardContainer = document.getElementById("card-container");
