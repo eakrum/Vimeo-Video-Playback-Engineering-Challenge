@@ -8,7 +8,7 @@ const client = new Vimeo(
 );
 
 //make each query into a promise so we can make sure we're getting our data back more organized in mainRoutes.js
-const getVideos = query => {
+const searchVimeo = query => {
   return new Promise((resolve, reject) => {
     //GET request to Vimeo API to get 10 videos based on query, then sort in relevance - as per docs.
     client.request(
@@ -36,5 +36,5 @@ const getVideos = query => {
 };
 
 module.exports = {
-  getVideos
+  searchVimeo
 };

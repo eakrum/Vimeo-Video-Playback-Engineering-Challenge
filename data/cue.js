@@ -73,18 +73,19 @@ async function deleteCue(videoId, cueId) {
   const document = await returnCue(videoId); //get the appropriate cue document
 
   let newCueData;
-  let allCues = document.cues;
+  let allCues = document.cues; //get all the cues from the specific doc
   for (let i = 0; i <= allCues.length - 1; i++) {
     if (allCues[i].cueId === cueId) {
       let removeable = allCues[i];
-      newCueData = allCues.filter(item => item !== removeable);
+      newCueData = allCues.filter(item => item !== removeable); //delete the cue
       break;
     }
   }
 
+  //logic to update the database
   const updatedCue = await cueCollection.updateOne(
     { _id: videoId },
-    { $set: {"cues": newCueData} }
+    { $set: { cues: newCueData } }
   );
   if (updatedCue.modifiedCount === 0) console.log("Could not update the cue");
   //throw an err

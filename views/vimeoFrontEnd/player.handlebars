@@ -27,25 +27,24 @@
 
 
 
-        <hr>
-        <h3>Cues (click on any item in row to delete it!)</h3>
+
         <div id="submitted-cues">
 
             <table id="cueTable" class='list'>
                 <thead>
                     <tr>
-                        <th>Cue</th>
-                        <th>Time</th>
-                        <th>Cue ID</th>
+                        <th>Cue (click any to delete!)</th>
+                        <th>Time (click any to delete!)</th>
+                        <th>Cue ID (click any to delete!)</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     {{#each cues}}
                     <tr id={{this.cueId}}>
-                        <td>{{this.cue}}</td>
-                        <td>{{this.time}} </td>
-                        <td>{{this.cueId}}</td>
+                        <td class="cue">{{this.cue}}</td>
+                        <td class="time">{{this.time}} </td>
+                        <td class="cueId">{{this.cueId}}</td>
                     </tr>
                     {{/each}}
 

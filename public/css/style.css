@@ -26,7 +26,7 @@ header {
 }
 
 .hero {
-  position: relative;
+  position: absolute;
   width: 1600px;
   margin-left: 0px;
   margin-top: 0px;
@@ -141,6 +141,7 @@ input[type="submit"]:hover {
 }
 
 /********************************PLAYER****************************************/
+
 .input-cue {
   position: relative;
   width: 50%;

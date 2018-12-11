@@ -1,3 +1,4 @@
+//make an api call to vimeo and render names
 function submit() {
   var query = document.getElementById("searchField").value;
 
@@ -18,6 +19,7 @@ function submit() {
   });
 }
 
+//render 10 cards based on query
 function renderNames(videos) {
   let cardContainer = document.getElementById("card-container");
 

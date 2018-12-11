@@ -1,3 +1,4 @@
+//configure a collection
 const dbConnection = require("./mongoConnection");
 
 /* Reference to the collection*/

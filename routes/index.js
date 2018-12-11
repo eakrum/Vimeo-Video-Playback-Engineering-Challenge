@@ -1,5 +1,6 @@
 const mainRoutes = require("./mainRoutes");
 
+//constructor method to initialize routes
 const constructor = app => {
   app.use("/", mainRoutes);
 
