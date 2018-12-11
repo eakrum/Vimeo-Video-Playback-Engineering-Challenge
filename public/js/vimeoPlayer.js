@@ -130,6 +130,13 @@ player.on("timeupdate", function(data) {
   }
 });
 
+//video Changer
+function videoChanger() {
+  let videoId = document.getElementById("video-changer").value;
+  let route = `/player/${videoId}`;
+  location.href = route;
+}
+
 /********************************************************************************************
  *                            INITIALIZE PAGE WITH CUE DATA
  *
