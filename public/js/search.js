@@ -14,6 +14,7 @@ function submit() {
     url: "http://127.0.0.1:3000/search",
     data: { data: query },
     success: function(data) {
+      console.log("data");
       renderNames(data);
     }
   });

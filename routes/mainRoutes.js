@@ -53,6 +53,7 @@ router.get("/player/:id", async (req, res) => {
 
 //this is a specific endpoint that checks the vimeo api for top 10 videos based on relevance - then sends videos back to client to render
 router.post("/search", async (req, res) => {
+  console.log("post search");
   const query = req.body.data; //query received from client input
   const vimeoData = await searchVimeo(query); //response received from Vimeo API - wait for the promise to be fulfilled
   const videos = vimeoData.data; //video data
