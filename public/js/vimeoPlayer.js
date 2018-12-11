@@ -37,7 +37,7 @@ function renderNewCue(cue, time, id) {
 /***************************This function displays the cue as an overlay***************************/
 function displayCue(text) {
   document.getElementById("overlay").style.display = "block";
-  document.getElementById("cue_text").innerHTML = text;
+  document.getElementById("new_cue").innerHTML = text;
   getTableData(); //update table data
 }
 
@@ -125,7 +125,7 @@ player.on("timeupdate", function(data) {
       break;
     } else {
       document.getElementById("overlay").style.display = "none";
-      document.getElementById("cue_text").innerHTML = "";
+      document.getElementById("new_cue").innerHTML = "";
     }
   }
 });

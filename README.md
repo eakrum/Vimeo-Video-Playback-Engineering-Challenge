@@ -4,6 +4,8 @@ Vimeo's coding challenge for the Video Playback Engineering team in Summer 2019.
 I've decided to take this program a bit further by applying functiontionality that uses the Vimeo API to search for a video and return the top 10 most relevant videos. The user can then navigate to
 a "video player" page to benefit from all cue functionality. Along with this project I have also completed two bonuses where persistent storage is used through an API I built, and upon changing videos (via videoId) the application can render all cues associated with that video (through the benefit of the API). I thoroughly enjoyed doing this challenge, and ended up learning a few things along the way. Hope you enjoy!
 
+For a live demo - please click [here](http://www.EakrumAwwal.com:3000)!
+
 ### Prerequisites
 
 This project works with node 8.11.3, testing on other versions has not been performed please check your version below.
@@ -51,6 +53,7 @@ Due to my responsibilities such as course work as well as it being finals week t
 
 1. When adding a new cue, although posted to database: the page needs to refresh for it to be recognized by the event listener to display the cue on the video.
 2. Similarly, if you add a cue you cannot immediately delete it without refreshing the page first. 
+3. I wasn't sure if ajax is considered vanilla Javascript but I used it only for my network calls, I did not maniplate any DOM using jquery.
 3. CSS can use some work to make the front end more appealing.
     - I am sure I can fix these problems if given the time but my schedule is extremely packed right now so I hope you understand. 
 
